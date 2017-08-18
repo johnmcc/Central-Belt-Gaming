@@ -1,0 +1,13 @@
+body {
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+input:focus {
+    outline: none;
+}
