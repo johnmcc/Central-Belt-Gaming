@@ -8,7 +8,7 @@ const Event = ({details}) => {
     const day = event_date.getDate();
     const month = event_date.getMonth() + 1;
     const year = event_date.getFullYear();
-    const time = event_date.getHours() + ":" + (event_date.getMinutes() == 0 ? "00":event_date.getMinutes());
+    const time = event_date.getHours() + ":" + (event_date.getMinutes() === 0 ? "00":event_date.getMinutes());
 
     const date = `${day}/${month}/${year}, ${time}`;
 
