@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EventsList from '../components/EventsList';
+import FilterForm from '../components/FilterForm';
 import config from '../config'
 import './App.css';
 
@@ -11,6 +12,8 @@ class App extends Component {
         super(props);
 
         this.state = {
+            textValue: "",
+            dateValue: "",
             events: [],
             filteredEvents: []
         };
@@ -18,7 +21,7 @@ class App extends Component {
         const access_token = config.key;
         const now = parseInt(+ new Date() / 1000);
 
-        const store_names = ["CommonGroundGames", "maxxpgaming", "KnightlyGaming", "GeekRetreatUK", "WestEndGamesGlasgow", "blacklionedinburgh", "GamesHubEdinburgh"];
+        const store_names = ["busstoptoyshop", "CommonGroundGames", "maxxpgaming", "KnightlyGaming", "GeekRetreatUK", "WestEndGamesGlasgow", "blacklionedinburgh", "GamesHubEdinburgh"];
 
         this.urls = _.map(store_names, page => {
             return `/${page}/events?access_token=${access_token}&since=${now}`;
@@ -43,40 +46,74 @@ class App extends Component {
         }
     }
 
-    handleKeyUp(event){
-        let value = event.target.value;
-        let newEvents =  _.filter(this.state.events, (event) => {
-            return event.description.toLowerCase().includes(value.toLowerCase()) ||
-                   event.name.toLowerCase().includes(value.toLowerCase());
-        });
+    filter(){
+        let textValue = this.state.textValue;
+        let dateValue = this.state.dateValue;
+        let events = this.state.events;
+
+        let filteredEvents = this.textFilter(events, textValue);
+        filteredEvents =this.dateFilter(filteredEvents, dateValue);
 
         this.setState({
-            filteredEvents: newEvents
+            filteredEvents: filteredEvents
         });
     }
 
-    handleDateChange(event){
-        var start = new Date(event.target.value);
-        var end = new Date(event.target.value);
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.textValue !== this.state.textValue || prevState.dateValue !== this.state.dateValue){
+            this.filter();
+        }
+    }
+
+    textFilter(events, textValue){
+        if(textValue === ""){
+            return events;
+        }
+
+        return _.filter(events, event => {
+            let description = event.description;
+            if(description){
+                return description.toLowerCase().includes(textValue.toLowerCase()) ||
+                       event.name.toLowerCase().includes(textValue.toLowerCase());
+            }
+            return false;
+        });
+    }
+
+    dateFilter(events, dateValue){
+        if(dateValue === ""){
+            return events;
+        }
+
+        var start = new Date(dateValue);
+        var end = new Date(dateValue);
 
         end.setHours(23);
         end.setMinutes(59);
 
-        let newEvents =  _.filter(this.state.events, (event) => {
+        return _.filter(events, event => {
             return event.start_time > start && event.start_time < end
-        });
-
-        this.setState({
-            filteredEvents: newEvents
         });
     }
 
     clear(event){
         event.preventDefault();
-        this.textInput.value = "";
-        this.dateInput.value = "";
         this.setState({
-            filteredEvents: this.state.events
+            filteredEvents: this.state.events,
+            textValue: "",
+            dateValue: ""
+        });
+    }
+
+    handleKeyUp(event){
+        this.setState({
+            textValue: event.target.value
+        });
+    }
+
+    handleDateChange(event){
+        this.setState({
+            dateValue: event.target.value
         });
     }
 
@@ -84,26 +121,11 @@ class App extends Component {
         return (
             <div id="app">
                 <h1>Upcoming Events in Glasgow</h1>
-                <form>
-                    <h2>Filter Events</h2>
-                    <label>
-                        Filter event name / description
-                        <input
-                            type="text"
-                            onKeyUp={this.handleKeyUp.bind(this)}
-                            ref={input => { this.textInput = input; }} />
-                    </label>
+                <FilterForm
+                    keyUp={this.handleKeyUp.bind(this)}
+                    dateChange={this.handleDateChange.bind(this)}
+                    clear={this.clear.bind(this)} />
 
-                    <label>
-                        Filter event date
-                        <input
-                            type="date"
-                            onChange={this.handleDateChange.bind(this)}
-                            ref={input => { this.dateInput = input; }} />
-                    </label>
-
-                    <button onClick={this.clear.bind(this)}>Clear</button>
-                </form>
                 <EventsList events={this.state.filteredEvents} />
             </div>
         );

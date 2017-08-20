@@ -23,7 +23,7 @@ const Event = ({details}) => {
         <div className="event">
             <h2>{details.name}</h2>
             <p className="event-place-date">{date} - {details.place.name}</p>
-            <p>{_.truncate(details.description, {length: 100})}</p>
+            <p>{_.truncate(details.description, {length: 150})}</p>
             <p><a href={url}>Read more</a></p>
         </div>
     );
