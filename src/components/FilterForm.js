@@ -8,16 +8,14 @@ const FilterForm = (props) => {
                 Filter event name / description
                 <input
                     type="text"
-                    onKeyUp={ props.keyUp }
-                    ref={(input) => { this.textInput = input; }}  />
+                    onKeyUp={ props.keyUp } />
             </label>
 
             <label>
                 Filter event date
                 <input
                     type="date"
-                    onChange={ props.dateChange }
-                    ref={(input) => { this.dateInput = input; }}  />
+                    onChange={ props.dateChange } />
             </label>
         </form>
     );
