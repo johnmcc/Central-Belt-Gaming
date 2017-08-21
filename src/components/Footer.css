@@ -1,0 +1,14 @@
+footer {
+    padding: 30px;
+    background: #333;
+    color: #fff;
+}
+
+footer a, footer a:link, footer a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+footer a:hover, footer a:active, footer a:focus {
+    text-decoration: underline;
+}

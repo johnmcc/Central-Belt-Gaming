@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import EventsList from '../components/EventsList';
 import FilterForm from '../components/FilterForm';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import config from '../config'
 import './App.css';
 
@@ -117,14 +119,14 @@ class App extends Component {
     render() {
         return (
             <div id="app">
-                <h1>Upcoming Events in Glasgow</h1>
+                <Header />
                 <FilterForm
                     textValue={this.state.textValue}
                     handleAutocompleteChange={this.handleAutocompleteChange.bind(this)}
                     dateChange={this.handleDateChange.bind(this)}
                     />
-
                 <EventsList events={this.state.filteredEvents} />
+                <Footer />
             </div>
         );
     }

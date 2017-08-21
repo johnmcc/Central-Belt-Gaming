@@ -1,4 +1,6 @@
 import React from 'react';
+import './Event.css';
+
 var _ = require("lodash");
 
 const Event = ({details}) => {
