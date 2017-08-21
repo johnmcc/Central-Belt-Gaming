@@ -25,7 +25,7 @@ const Event = ({details}) => {
         <div className="event">
             <h2><a href={url}>{details.name}</a></h2>
             <p className="event-place-date">{date} - {details.place.name}</p>
-            <p>{_.truncate(details.description, {length: 150})}</p>
+            <p>{_.truncate(details.description, {length: 200})}</p>
             <a className="eventFooterLink" href={url}>Read more</a>
         </div>
     );

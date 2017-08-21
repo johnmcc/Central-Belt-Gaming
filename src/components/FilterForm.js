@@ -3,6 +3,15 @@ import Autocomplete from 'react-autocomplete';
 import './FilterForm.css';
 
 const FilterForm = (props) => {
+    const today = new Date();
+
+    const year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    month = month < 9 ? "0" + month: month;
+    const day = today.getDate();
+
+    const todayFormatted = `${year}-${month}-${day}`;
+    
     return (
         <form>
             <h2>Filter Events</h2>
@@ -32,6 +41,7 @@ const FilterForm = (props) => {
                     Filter event date
                     <input
                         type="date"
+                        min={todayFormatted}
                         onChange={ props.dateChange } />
                 </label>
             </fieldset>
