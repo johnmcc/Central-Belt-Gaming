@@ -33,16 +33,18 @@ class App extends Component {
     componentWillMount() {
         for(var url of this.urls){
             FB.api(url, response => {
-                _.forEach(response.data, event => {
+                _.map(response.data, event => {
                     event.start_time = new Date(event.start_time);
                     event.end_time = new Date(event.end_time);
+                });
 
-                    var events = this.state.events;
-                    events.push(event);
-                    this.setState({
-                        events: events,
-                        filteredEvents: events
-                    });
+                let newEvents = this.state.events.concat(response.data);
+
+                this.setState((prevState, props) => {
+                    return {
+                        events: newEvents,
+                        filteredEvents: newEvents
+                    };
                 });
             });
         }

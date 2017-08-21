@@ -5,7 +5,7 @@ var _ = require("lodash");
 
 const EventsList = ({events}) => {
     if(!events.length){
-        return (<img id="loading" src="/images/loading.gif" alt="Loading..." />);
+        return <img id="loading" src="/images/loading.gif" alt="Loading..." />;
     }
 
     events = _.sortBy(events, ["start_time"]);
