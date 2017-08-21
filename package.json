@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "days": "^1.1.1",
     "fb": "^2.0.0",
     "lodash": "^4.17.4",
+    "months": "^1.2.0",
     "react": "^15.6.1",
     "react-autocomplete": "^1.7.1",
     "react-dom": "^15.6.1"

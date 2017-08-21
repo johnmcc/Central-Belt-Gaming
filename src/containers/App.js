@@ -101,11 +101,7 @@ class App extends Component {
     }
 
     handleAutocompleteChange(thing){
-        if(typeof(thing) === "string"){
-            var value = thing;
-        }else{
-            var value = thing.target.value;
-        }
+        var value = typeof(thing) === "string" ? thing:thing.target.value;
 
         this.setState({
             textValue: value
