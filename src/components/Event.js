@@ -23,10 +23,10 @@ const Event = ({details}) => {
 
     return (
         <div className="event">
-            <h2>{details.name}</h2>
+            <h2><a href={url}>{details.name}</a></h2>
             <p className="event-place-date">{date} - {details.place.name}</p>
             <p>{_.truncate(details.description, {length: 150})}</p>
-            <a href={url}>Read more</a>
+            <a className="eventFooterLink" href={url}>Read more</a>
         </div>
     );
 };

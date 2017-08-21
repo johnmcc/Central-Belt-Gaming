@@ -6,3 +6,8 @@
     flex-wrap: wrap;
     padding: 0 40px;
 }
+
+#loading {
+    margin: 0 auto 30px auto;
+    display: inherit;
+}

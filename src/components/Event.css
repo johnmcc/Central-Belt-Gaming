@@ -11,12 +11,19 @@
 
 .event h2 {
     margin-top: 0;
-    color: #000058;
     line-height: 130%;
-    min-height: 62px;
 }
 
-.event a, .event a:link, .event a:visited {
+.event h2 a, .event h2 a:link, .event h2 a:visited {
+    color: #000058;
+    text-decoration: none;
+}
+
+.event h2 a:hover, .event h2 a:active, .event h2 a:focus {
+
+}
+
+a.eventFooterLink, a.eventFooterLink:link, a.eventFooterLink:visited {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -26,6 +33,6 @@
     color: #fff;
 }
 
-.event a:hover, .event a:active, .event a:focus {
+a.eventFooterLink:hover, a.eventFooterLink:active, a.eventFooterLink:focus {
 
 }
