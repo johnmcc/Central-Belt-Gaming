@@ -96,15 +96,6 @@ class App extends Component {
         });
     }
 
-    clear(event){
-        event.preventDefault();
-        this.setState({
-            filteredEvents: this.state.events,
-            textValue: "",
-            dateValue: ""
-        });
-    }
-
     handleAutocompleteChange(thing){
         if(typeof(thing) === "string"){
             var value = thing;
@@ -131,7 +122,7 @@ class App extends Component {
                     textValue={this.state.textValue}
                     handleAutocompleteChange={this.handleAutocompleteChange.bind(this)}
                     dateChange={this.handleDateChange.bind(this)}
-                    clear={this.clear.bind(this)} />
+                    />
 
                 <EventsList events={this.state.filteredEvents} />
             </div>
