@@ -3,17 +3,27 @@
     width: 28%;
     background: #fff;
     margin: 15px;
-    padding: 15px;
+    padding: 15px 15px 60px 15px;
     background: #EEE;
     color: #000;
+    position: relative;
 }
 
 .event h2 {
     margin-top: 0;
+    color: #000058;
+    line-height: 130%;
+    min-height: 62px;
 }
 
 .event a, .event a:link, .event a:visited {
-
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: #000058;
+    color: #fff;
 }
 
 .event a:hover, .event a:active, .event a:focus {
