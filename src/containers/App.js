@@ -5,7 +5,7 @@ import config from '../config'
 import './App.css';
 
 var _ = require("lodash");
-var {FB, FacebookApiException} = require('fb');
+var {FB} = require('fb');
 
 class App extends Component {
     constructor(props){
@@ -19,7 +19,7 @@ class App extends Component {
         };
 
         const access_token = config.key;
-        const now = parseInt(+ new Date() / 1000);
+        const now = parseInt(+ new Date() / 1000, 10);
 
         const store_names = ["busstoptoyshop", "CommonGroundGames", "maxxpgaming", "KnightlyGaming", "GeekRetreatUK", "WestEndGamesGlasgow", "blacklionedinburgh", "GamesHubEdinburgh"];
 
