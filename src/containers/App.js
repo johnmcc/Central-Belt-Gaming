@@ -105,9 +105,15 @@ class App extends Component {
         });
     }
 
-    handleKeyUp(event){
+    handleAutocompleteChange(thing){
+        if(typeof(thing) === "string"){
+            var value = thing;
+        }else{
+            var value = thing.target.value;
+        }
+
         this.setState({
-            textValue: event.target.value
+            textValue: value
         });
     }
 
@@ -122,7 +128,8 @@ class App extends Component {
             <div id="app">
                 <h1>Upcoming Events in Glasgow</h1>
                 <FilterForm
-                    keyUp={this.handleKeyUp.bind(this)}
+                    textValue={this.state.textValue}
+                    handleAutocompleteChange={this.handleAutocompleteChange.bind(this)}
                     dateChange={this.handleDateChange.bind(this)}
                     clear={this.clear.bind(this)} />
 

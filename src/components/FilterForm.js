@@ -1,4 +1,5 @@
 import React from 'react';
+import Autocomplete from 'react-autocomplete';
 
 const FilterForm = (props) => {
     return (
@@ -6,9 +7,23 @@ const FilterForm = (props) => {
             <h2>Filter Events</h2>
             <label>
                 Filter event name / description
-                <input
-                    type="text"
-                    onKeyUp={ props.keyUp } />
+                <Autocomplete
+                  getItemValue={(item) => item.label}
+                  items={[
+                    { label: 'destiny' },
+                    { label: 'mtg' },
+                    { label: 'netrunner' },
+                    { label: 'x-wing' },
+                  ]}
+                  renderItem={(item, isHighlighted) =>
+                    <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                      {item.label}
+                    </div>
+                  }
+                  value={props.textValue}
+                  onChange={props.handleAutocompleteChange}
+                  onSelect={props.handleAutocompleteChange}
+                />
             </label>
 
             <label>
