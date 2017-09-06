@@ -30,7 +30,7 @@ class App extends Component {
         });
     }
 
-    componentWillMount() {
+    componentDidMount() {
         for(var url of this.urls){
             FB.api(url, response => {
                 _.map(response.data, event => {
