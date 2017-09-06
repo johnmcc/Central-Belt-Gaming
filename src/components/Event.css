@@ -1,12 +1,12 @@
 .event {
-    display: inline-block;
-    width: 28%;
     background: #fff;
     margin: 15px;
     padding: 15px 15px 60px 15px;
     background: #EEE;
     color: #000;
     position: relative;
+    min-width: 25%;
+    max-width: 25%;
 }
 
 .event h2 {

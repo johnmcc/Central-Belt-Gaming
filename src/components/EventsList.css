@@ -7,7 +7,19 @@
     padding: 0 40px;
 }
 
+.eventDay {
+    width: 100%;
+}
+
 #loading {
     margin: 0 auto 30px auto;
     display: inherit;
+}
+
+.events {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
