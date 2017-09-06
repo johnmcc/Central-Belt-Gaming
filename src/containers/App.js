@@ -122,6 +122,7 @@ class App extends Component {
                     textValue={this.state.textValue}
                     handleAutocompleteChange={this.handleAutocompleteChange.bind(this)}
                     dateChange={this.handleDateChange.bind(this)}
+                    count={this.state.filteredEvents.length}
                     />
                 <EventsList events={this.state.filteredEvents} />
                 <Footer />

@@ -1,5 +1,6 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
+import EventCount from './EventCount.js';
 import './FilterForm.css';
 
 const FilterForm = (props) => {
@@ -11,10 +12,11 @@ const FilterForm = (props) => {
     const day = today.getDate();
 
     const todayFormatted = `${year}-${month}-${day}`;
-    
+
     return (
         <form>
             <h2>Filter Events</h2>
+
             <fieldset>
                 <label>
                     Filter event name / description
@@ -44,6 +46,8 @@ const FilterForm = (props) => {
                         min={todayFormatted}
                         onChange={ props.dateChange } />
                 </label>
+
+                <EventCount count={props.count} />
             </fieldset>
         </form>
     );
