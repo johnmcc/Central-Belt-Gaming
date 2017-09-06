@@ -1,6 +1,6 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
-import EventCount from './EventCount.js';
+import EventCount from './EventCount';
 import './FilterForm.css';
 
 const FilterForm = (props) => {

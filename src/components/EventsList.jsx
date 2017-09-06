@@ -1,5 +1,5 @@
 import React from 'react';
-import Event from './Event.js';
+import Event from './Event';
 import './EventsList.css';
 var _ = require("lodash");
 
