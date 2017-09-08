@@ -15,16 +15,20 @@ const Event = ({details}) => {
     const date = `${day}/${month}/${year}, ${time}`;
 
     // fix stores not entering place details
+    var location = null;
     if(details.place === undefined || !details.place.name) {
-        details.place = {
-                name: "Location not set"
-        };
+        location = <p className="event-location">Location: not set</p>
+    }else{
+        location = <p className="event-location">
+                    Location: <a href={`https://www.facebook.com/profile.php?id=${details.place.id}`}>{details.place.name}</a>
+                   </p>
     }
 
     return (
         <div className="event">
             <h2><a href={url}>{details.name}</a></h2>
-            <p className="event-place-date">{date} - {details.place.name}</p>
+            <p className="event-date">Date: {date}</p>
+            {location}
             <p>{_.truncate(details.description, {length: 200})}</p>
             <a className="eventFooterLink" href={url}>Read more</a>
         </div>

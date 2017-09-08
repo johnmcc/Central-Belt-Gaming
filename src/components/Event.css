@@ -20,7 +20,28 @@
 }
 
 .event h2 a:hover, .event h2 a:active, .event h2 a:focus {
+    color: #33338B;
+}
 
+.event .event-date {
+    margin-bottom: 0;
+}
+
+.event .event-location {
+    margin-top: 0;
+}
+
+.event .event-location a,
+.event .event-location a:link,
+.event .event-location a:visited  {
+    color: #000058;
+}
+
+.event .event-location a:hover,
+.event .event-location a:active,
+.event .event-location a:focus {
+    text-decoration: none;
+    color: #33338B;
 }
 
 a.eventFooterLink, a.eventFooterLink:link, a.eventFooterLink:visited {
@@ -34,7 +55,7 @@ a.eventFooterLink, a.eventFooterLink:link, a.eventFooterLink:visited {
 }
 
 a.eventFooterLink:hover, a.eventFooterLink:active, a.eventFooterLink:focus {
-
+    background-color: #33338B;
 }
 
 @media(max-width: 1050px) {
