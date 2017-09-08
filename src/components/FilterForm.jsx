@@ -14,27 +14,27 @@ const FilterForm = (props) => {
 
     return (
         <form>
-            <h2>Filter Events</h2>
+            <EventCount count={props.count} />
 
             <fieldset>
-                <label>
-                    Filter event name / description
-                    <input
-                        type="text"
-                        onChange={props.handleTextChange}
-                        placeholder=""
-                    />
-                </label>
+                <div id="fieldset-flex">
+                    <label>
+                        Filter event name / description
+                        <input
+                            type="text"
+                            onChange={props.handleTextChange}
+                            placeholder=""
+                        />
+                    </label>
 
-                <label>
-                    Filter event date
-                    <input
-                        type="date"
-                        min={todayFormatted}
-                        onChange={ props.dateChange } />
-                </label>
-
-                <EventCount count={props.count} />
+                    <label>
+                        Filter event date
+                        <input
+                            type="date"
+                            min={todayFormatted}
+                            onChange={ props.dateChange } />
+                    </label>
+                </div>
             </fieldset>
         </form>
     );

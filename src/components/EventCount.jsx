@@ -3,7 +3,7 @@ import './EventCount.css';
 
 const EventCount = (props) => {
     return (
-        <span>Showing {props.count} events</span>
+        <h3>Showing {props.count} events</h3>
     );
 }
 
