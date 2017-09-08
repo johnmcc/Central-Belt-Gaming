@@ -100,7 +100,7 @@ class App extends Component {
         });
     }
 
-    handleAutocompleteChange(thing){
+    handleTextChange(thing){
         const value = typeof(thing) === "string" ? thing:thing.target.value;
 
         this.setState({
@@ -120,7 +120,7 @@ class App extends Component {
                 <Header />
                 <FilterForm
                     textValue={this.state.textValue}
-                    handleAutocompleteChange={this.handleAutocompleteChange.bind(this)}
+                    handleTextChange={this.handleTextChange.bind(this)}
                     dateChange={this.handleDateChange.bind(this)}
                     count={this.state.filteredEvents.length}
                     />

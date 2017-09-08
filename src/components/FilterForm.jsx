@@ -1,5 +1,4 @@
 import React from 'react';
-import Autocomplete from 'react-autocomplete';
 import EventCount from './EventCount';
 import './FilterForm.css';
 
@@ -20,22 +19,10 @@ const FilterForm = (props) => {
             <fieldset>
                 <label>
                     Filter event name / description
-                    <Autocomplete
-                      getItemValue={(item) => item.label}
-                      items={[
-                        { label: 'destiny' },
-                        { label: 'mtg' },
-                        { label: 'netrunner' },
-                        { label: 'x-wing' },
-                      ]}
-                      renderItem={(item, isHighlighted) =>
-                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                          {item.label}
-                        </div>
-                      }
-                      value={props.textValue}
-                      onChange={props.handleAutocompleteChange}
-                      onSelect={props.handleAutocompleteChange}
+                    <input
+                        type="text"
+                        onChange={props.handleTextChange}
+                        placeholder=""
                     />
                 </label>
 
