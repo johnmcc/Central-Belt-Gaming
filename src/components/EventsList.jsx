@@ -25,7 +25,7 @@ const EventsList = ({events}) => {
     let rows = [];
 
     for(let day in events){
-        let event_date = new Date(Date.parse(day));
+        const event_date = new Date(Date.parse(day));
         rows.push(
             <div className="eventDay" key={day}>
                 <h3>{day}</h3>

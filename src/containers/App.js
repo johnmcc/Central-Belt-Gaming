@@ -38,7 +38,7 @@ class App extends Component {
                     event.end_time = new Date(event.end_time);
                 });
 
-                let newEvents = this.state.events.concat(response.data);
+                const newEvents = this.state.events.concat(response.data);
 
                 this.setState((prevState, props) => {
                     return {
@@ -51,11 +51,11 @@ class App extends Component {
     }
 
     filter(){
-        let textValue = this.state.textValue;
-        let dateValue = this.state.dateValue;
-        let events = this.state.events;
+        const textValue = this.state.textValue;
+        const dateValue = this.state.dateValue;
+        const events = this.state.events;
 
-        let filteredEvents = this.textFilter(events, textValue);
+        var filteredEvents = this.textFilter(events, textValue);
         filteredEvents =this.dateFilter(filteredEvents, dateValue);
 
         this.setState({
@@ -75,7 +75,7 @@ class App extends Component {
         }
 
         return _.filter(events, event => {
-            let description = event.description;
+            const description = event.description;
             if(description){
                 return description.toLowerCase().includes(textValue.toLowerCase()) ||
                        event.name.toLowerCase().includes(textValue.toLowerCase());
@@ -101,7 +101,7 @@ class App extends Component {
     }
 
     handleAutocompleteChange(thing){
-        var value = typeof(thing) === "string" ? thing:thing.target.value;
+        const value = typeof(thing) === "string" ? thing:thing.target.value;
 
         this.setState({
             textValue: value
