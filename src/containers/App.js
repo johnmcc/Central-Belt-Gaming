@@ -29,7 +29,16 @@ class App extends Component {
         const access_token = config.key;
         const now = parseInt(+ new Date() / 1000, 10);
 
-        const store_names = ["busstoptoyshop", "CommonGroundGames", "maxxpgaming", "KnightlyGaming", "GeekRetreatUK", "WestEndGamesGlasgow", "blacklionedinburgh", "GamesHubEdinburgh"];
+        const store_names = [
+            "busstoptoyshop",
+            "CommonGroundGames",
+            "maxxpgaming",
+            "KnightlyGaming",
+            "GeekRetreatUK",
+            "WestEndGamesGlasgow",
+            "blacklionedinburgh",
+            "GamesHubEdinburgh"
+        ];
 
         this.urls = map(store_names, page => {
             return `/${page}/events?access_token=${access_token}&since=${now}`;
