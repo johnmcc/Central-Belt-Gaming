@@ -6,7 +6,12 @@ import Footer from '../components/Footer';
 import config from '../config'
 import './App.css';
 
-var _ = require("lodash");
+import uniq from "lodash/uniq";
+import map from "lodash/map";
+import compact from "lodash/compact";
+import filter from "lodash/filter";
+import sortBy from "lodash/sortBy";
+
 var {FB} = require('fb');
 
 class App extends Component {
@@ -16,8 +21,9 @@ class App extends Component {
         this.state = {
             textValue: "",
             dateValue: "",
+            locationValue: "",
             events: [],
-            filteredEvents: []
+            filteredEvents: [],
         };
 
         const access_token = config.key;
@@ -25,7 +31,7 @@ class App extends Component {
 
         const store_names = ["busstoptoyshop", "CommonGroundGames", "maxxpgaming", "KnightlyGaming", "GeekRetreatUK", "WestEndGamesGlasgow", "blacklionedinburgh", "GamesHubEdinburgh"];
 
-        this.urls = _.map(store_names, page => {
+        this.urls = map(store_names, page => {
             return `/${page}/events?access_token=${access_token}&since=${now}`;
         });
     }
@@ -33,7 +39,7 @@ class App extends Component {
     componentDidMount() {
         for(var url of this.urls){
             FB.api(url, response => {
-                _.map(response.data, event => {
+                map(response.data, event => {
                     event.start_time = new Date(event.start_time);
                     event.end_time = new Date(event.end_time);
                 });
@@ -43,7 +49,7 @@ class App extends Component {
                 this.setState((prevState, props) => {
                     return {
                         events: newEvents,
-                        filteredEvents: newEvents
+                        filteredEvents: newEvents,
                     };
                 });
             });
@@ -53,10 +59,12 @@ class App extends Component {
     filter(){
         const textValue = this.state.textValue;
         const dateValue = this.state.dateValue;
+        const locationValue = this.state.locationValue;
         const events = this.state.events;
 
         var filteredEvents = this.textFilter(events, textValue);
-        filteredEvents =this.dateFilter(filteredEvents, dateValue);
+        filteredEvents = this.dateFilter(filteredEvents, dateValue);
+        filteredEvents = this.locationFilter(filteredEvents, locationValue);
 
         this.setState({
             filteredEvents: filteredEvents
@@ -64,7 +72,9 @@ class App extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        if(prevState.textValue !== this.state.textValue || prevState.dateValue !== this.state.dateValue){
+        if(prevState.textValue !== this.state.textValue ||
+            prevState.dateValue !== this.state.dateValue ||
+            prevState.locationValue !== this.state.locationValue){
             this.filter();
         }
     }
@@ -74,7 +84,7 @@ class App extends Component {
             return events;
         }
 
-        return _.filter(events, event => {
+        return filter(events, event => {
             const description = event.description;
             if(description){
                 return description.toLowerCase().includes(textValue.toLowerCase()) ||
@@ -95,9 +105,16 @@ class App extends Component {
         end.setHours(23);
         end.setMinutes(59);
 
-        return _.filter(events, event => {
+        return filter(events, event => {
             return event.start_time > start && event.start_time < end
         });
+    }
+
+    locationFilter(events, locationValue){
+        if(locationValue === ""){
+            return events
+        }
+        return filter(events, event => { return event.place != undefined && event.place.name === locationValue });
     }
 
     handleTextChange(thing){
@@ -114,6 +131,12 @@ class App extends Component {
         });
     }
 
+    handleLocationChange(event){
+        this.setState({
+            locationValue: event.target.value
+        });
+    }
+
     render() {
         return (
             <div id="app">
@@ -121,8 +144,10 @@ class App extends Component {
                 <FilterForm
                     textValue={this.state.textValue}
                     handleTextChange={this.handleTextChange.bind(this)}
-                    dateChange={this.handleDateChange.bind(this)}
+                    handleDateChange={this.handleDateChange.bind(this)}
+                    handleLocationChange={this.handleLocationChange.bind(this)}
                     count={this.state.filteredEvents.length}
+                    locations={sortBy(uniq(compact(this.state.events.map(event => event.place)).map(place => place.name)))}
                     />
                 <EventsList events={this.state.filteredEvents} />
                 <Footer />

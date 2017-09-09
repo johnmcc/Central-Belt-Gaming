@@ -1,7 +1,7 @@
 import React from 'react';
 import './Event.css';
 
-var _ = require("lodash");
+import truncate from "lodash/truncate";
 
 const Event = ({details}) => {
     const url = `https://www.facebook.com/events/${details.id}`;
@@ -29,7 +29,7 @@ const Event = ({details}) => {
             <h2><a href={url}>{details.name}</a></h2>
             <p className="event-date">Date: {date}</p>
             {location}
-            <p>{_.truncate(details.description, {length: 200})}</p>
+            <p>{truncate(details.description, {length: 200})}</p>
             <a className="eventFooterLink" href={url}>Read more</a>
         </div>
     );

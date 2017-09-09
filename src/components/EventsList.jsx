@@ -1,14 +1,14 @@
 import React from 'react';
 import Event from './Event';
 import './EventsList.css';
-var _ = require("lodash");
+import sortBy from "lodash/sortBy";
 
 const EventsList = ({events}) => {
     if(!events.length){
         return <img id="loading" src="/images/loading.gif" alt="Loading..." />;
     }
 
-    events = _.sortBy(events, ["start_time"]);
+    events = sortBy(events, ["start_time"]);
     return (
         <div id="eventsList">
             {events.map(event => {

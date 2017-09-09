@@ -32,7 +32,15 @@ const FilterForm = (props) => {
                         <input
                             type="date"
                             min={todayFormatted}
-                            onChange={ props.dateChange } />
+                            onChange={ props.handleDateChange } />
+                    </label>
+
+                    <label>
+                        Filter by location
+                        <select onChange={props.handleLocationChange}>
+                            <option value="">Any location</option>
+                            {props.locations.map( location => <option key={location}>{location}</option> )}
+                        </select>
                     </label>
                 </div>
             </fieldset>
