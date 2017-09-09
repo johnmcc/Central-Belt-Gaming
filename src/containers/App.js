@@ -112,9 +112,9 @@ class App extends Component {
 
     locationFilter(events, locationValue){
         if(locationValue === ""){
-            return events
+            return events;
         }
-        return filter(events, event => { return event.place != undefined && event.place.name === locationValue });
+        return filter(events, event => { return event.place !== undefined && event.place.name === locationValue });
     }
 
     handleTextChange(thing){
