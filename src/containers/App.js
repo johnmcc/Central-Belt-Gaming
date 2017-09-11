@@ -101,7 +101,7 @@ class App extends Component {
             }
 
             const eventName = event.name.toLowerCase();
-            const searchTerm = textValue.toLowerCase()
+            const searchTerm = textValue.toLowerCase().trim();
 
             for(let arr of search_strings){
                 if(arr.indexOf(searchTerm) > -1){
@@ -112,7 +112,7 @@ class App extends Component {
             if(terms === undefined){
                 terms = [searchTerm];
             }
-            
+
             if(description){
                 for(let term of terms){
                     return description.includes(term) || eventName.includes(term);
