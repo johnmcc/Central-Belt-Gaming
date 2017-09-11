@@ -23,3 +23,7 @@
     width: 100%;
     flex-wrap: wrap;
 }
+
+#noResults {
+    text-align: center;
+}

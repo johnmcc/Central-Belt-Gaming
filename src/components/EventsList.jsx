@@ -3,9 +3,13 @@ import Event from './Event';
 import './EventsList.css';
 import sortBy from "lodash/sortBy";
 
-const EventsList = ({events}) => {
+const EventsList = ({events, isFiltered}) => {
     if(!events.length){
-        return <img id="loading" src="/images/loading.gif" alt="Loading..." />;
+        if(isFiltered){
+            return <p id="noResults">There are no results for that search.</p>
+        }else{
+            return <img id="loading" src="/images/loading.gif" alt="Loading..." />;
+        }
     }
 
     events = sortBy(events, ["start_time"]);

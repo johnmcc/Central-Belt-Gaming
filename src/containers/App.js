@@ -146,6 +146,12 @@ class App extends Component {
         });
     }
 
+    isFiltered(){
+        return !(this.state.textValue === "" &&
+                this.state.textValue === "" &&
+                this.state.locationValue === "");
+    }
+
     render() {
         return (
             <div id="app">
@@ -158,7 +164,10 @@ class App extends Component {
                     count={this.state.filteredEvents.length}
                     locations={sortBy(uniq(compact(this.state.events.map(event => event.place)).map(place => place.name)))}
                     />
-                <EventsList events={this.state.filteredEvents} />
+                <EventsList
+                    events={this.state.filteredEvents}
+                    isFiltered={this.isFiltered()}
+                />
                 <Footer />
             </div>
         );
