@@ -3,7 +3,8 @@ import EventsList from '../components/EventsList';
 import FilterForm from '../components/FilterForm';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import config from '../config'
+import config from '../config';
+import search_strings from '../lib/search_strings';
 import './App.css';
 
 import uniq from "lodash/uniq";
@@ -94,10 +95,28 @@ class App extends Component {
         }
 
         return filter(events, event => {
-            const description = event.description;
+            var description = event.description;
             if(description){
-                return description.toLowerCase().includes(textValue.toLowerCase()) ||
-                       event.name.toLowerCase().includes(textValue.toLowerCase());
+                description = description.toLowerCase();
+            }
+
+            const eventName = event.name.toLowerCase();
+            const searchTerm = textValue.toLowerCase()
+
+            for(let arr of search_strings){
+                if(arr.indexOf(searchTerm) > -1){
+                    var terms = arr;
+                }
+            }
+
+            if(terms === undefined){
+                terms = [searchTerm];
+            }
+            
+            if(description){
+                for(let term of terms){
+                    return description.includes(term) || eventName.includes(term);
+                }
             }
             return false;
         });
