@@ -54,7 +54,11 @@ class App extends Component {
                     event.end_time = new Date(event.end_time);
                 });
 
-                const newEvents = this.state.events.concat(response.data);
+                // Fudge descriptions
+                const newEvents = this.state.events.concat(response.data).map(event => {
+                    event.description = event.description || "";
+                    return event;
+                });
 
                 this.setState((prevState, props) => {
                     return {
@@ -95,20 +99,15 @@ class App extends Component {
         }
 
         return filter(events, event => {
-            var description = event.description;
-            if(description){
-                description = description.toLowerCase();
-            }
+            var description = event.description.toLowerCase();
 
             const eventName = event.name.toLowerCase();
             const term = textValue.toLowerCase().trim();
 
             const st = new SearchTerms(term);
 
-            if(description){
-                for(let term of st.getTermArray()){
-                    return description.includes(term) || eventName.includes(term);
-                }
+            for(let term of st.getTermArray()){
+                return description.includes(term) || eventName.includes(term);
             }
             return false;
         });
