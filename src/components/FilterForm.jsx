@@ -13,7 +13,7 @@ const FilterForm = (props) => {
     const todayFormatted = `${year}-${month}-${day}`;
 
     return (
-        <form>
+        <form onSubmit={(event) => {event.preventDefault();}}>
             <EventCount count={props.count} />
 
             <fieldset>
