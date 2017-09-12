@@ -13,7 +13,7 @@ import compact from "lodash/compact";
 import filter from "lodash/filter";
 import sortBy from "lodash/sortBy";
 
-var {FB} = require('fb');
+var {FB} = require('../fb');
 
 class App extends Component {
     constructor(props){
