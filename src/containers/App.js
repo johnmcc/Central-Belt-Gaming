@@ -4,7 +4,7 @@ import FilterForm from '../components/FilterForm';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import config from '../config';
-import search_strings from '../lib/search_strings';
+import SearchTerms from '../lib/SearchTerms';
 import './App.css';
 
 import uniq from "lodash/uniq";
@@ -101,20 +101,12 @@ class App extends Component {
             }
 
             const eventName = event.name.toLowerCase();
-            const searchTerm = textValue.toLowerCase().trim();
+            const term = textValue.toLowerCase().trim();
 
-            for(let arr of search_strings){
-                if(arr.indexOf(searchTerm) > -1){
-                    var terms = arr;
-                }
-            }
-
-            if(terms === undefined){
-                terms = [searchTerm];
-            }
+            const st = new SearchTerms(term);
 
             if(description){
-                for(let term of terms){
+                for(let term of st.getTermArray()){
                     return description.includes(term) || eventName.includes(term);
                 }
             }
