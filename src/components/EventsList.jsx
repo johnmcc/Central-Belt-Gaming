@@ -8,7 +8,7 @@ const EventsList = ({events, isFiltered}) => {
         if(isFiltered){
             return <p id="noResults">There are no results for that search.</p>
         }else{
-            return <img id="loading" src="/images/loading.gif" alt="Loading..." />;
+            return <img id="loading" src="./images/loading.gif" alt="Loading..." />;
         }
     }
 
