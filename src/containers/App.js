@@ -162,6 +162,12 @@ class App extends Component {
                 this.state.locationValue === "");
     }
 
+    getUniqueLocations(){
+        const places = compact(this.state.events.map(event => event.place));
+        const names = places.map(place => place.name);
+        return sortBy(uniq(names));
+    }
+
     render() {
         return (
             <div id="app">
@@ -172,7 +178,7 @@ class App extends Component {
                     handleDateChange={this.handleDateChange.bind(this)}
                     handleLocationChange={this.handleLocationChange.bind(this)}
                     count={this.state.filteredEvents.length}
-                    locations={sortBy(uniq(compact(this.state.events.map(event => event.place)).map(place => place.name)))}
+                    locations={this.getUniqueLocations()}
                     />
                 <EventsList
                     events={this.state.filteredEvents}
