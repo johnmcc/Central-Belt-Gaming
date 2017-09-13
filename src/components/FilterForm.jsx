@@ -7,7 +7,7 @@ const FilterForm = (props) => {
 
     const year = today.getFullYear();
     var month = today.getMonth() + 1;
-    month = month < 9 ? "0" + month: month;
+    month = month <= 9 ? "0" + month: month;
     const day = today.getDate();
 
     const todayFormatted = `${year}-${month}-${day}`;
