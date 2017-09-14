@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import config from '../config';
 import SearchTerms from '../lib/SearchTerms';
+import store_names from '../lib/StoreNames';
 import './App.css';
 
 import uniq from "lodash/uniq";
@@ -29,17 +30,6 @@ class App extends Component {
 
         const access_token = config.key;
         const now = parseInt(+ new Date() / 1000, 10);
-
-        const store_names = [
-            "busstoptoyshop",
-            "CommonGroundGames",
-            "maxxpgaming",
-            "KnightlyGaming",
-            "GeekRetreatUK",
-            "WestEndGamesGlasgow",
-            "blacklionedinburgh",
-            "GamesHubEdinburgh"
-        ];
 
         this.urls = map(store_names, page => {
             return `/${page}/events?access_token=${access_token}&since=${now}`;
