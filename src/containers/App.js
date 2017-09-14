@@ -46,7 +46,9 @@ class App extends Component {
 
                 // Fudge descriptions
                 const newEvents = this.state.events.concat(response.data).map(event => {
-                    event.description = event.description || "";
+                    if(event.description === undefined){
+                        event.description = "";
+                    }
                     return event;
                 });
 

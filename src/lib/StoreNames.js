@@ -6,5 +6,6 @@ export default [
     "GeekRetreatUK",
     "WestEndGamesGlasgow",
     "blacklionedinburgh",
-    "GamesHubEdinburgh"
+    "GamesHubEdinburgh",
+    "WarhammerGlasgow"
 ];
