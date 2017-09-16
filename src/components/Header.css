@@ -12,6 +12,7 @@ header .titles {
 header .supplemental {
     float: right;
     width: 50%;
+    height: 100px;
 }
 
 header h1 {
@@ -27,7 +28,7 @@ header h2 {
 @media(max-width:1000px) {
     header .titles, header .supplemental {
         display: block;
-        width: 100% !important;
-        float: none !important;
+        width: 100%;
+        float: none;
     }
 }
