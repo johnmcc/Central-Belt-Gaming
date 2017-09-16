@@ -94,7 +94,7 @@ class App extends Component {
             var description = event.description.toLowerCase();
 
             const eventName = event.name.toLowerCase();
-            const term = textValue.toLowerCase().trim();
+            const term = textValue;
 
             const st = new SearchTerms(term);
 

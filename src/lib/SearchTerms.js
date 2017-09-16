@@ -1,6 +1,6 @@
 class SearchTerms {
     constructor(term){
-        this.term = term;
+        this.term = term.toLowerCase().trim();
         this.search_strings = [
             ["x-wing", "xwing", "x wing"],
             ["mtg", "magic", "magic the gathering"],
