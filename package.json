@@ -2,7 +2,7 @@
   "name": "fb-games",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://johnmcc.github.io/Central-Belt-Gaming",
+  "homepage": "https://johnmcc.github.io/Central-Belt-Gaming",
   "dependencies": {
     "days": "^1.1.1",
     "fb": "^2.0.0",
