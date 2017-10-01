@@ -5,7 +5,8 @@ class SearchTerms {
             ["x-wing", "xwing", "x wing"],
             ["mtg", "magic", "magic the gathering"],
             ["destiny", "star wars destiny"],
-            ["game of thrones", "got", "agot"]
+            ["game of thrones", "got", "agot"],
+            ["l5r", "legend of the five rings", "legend"]
         ];
     }
 
